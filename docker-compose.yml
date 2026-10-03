@@ -1,0 +1,24 @@
+services:
+  activemq:
+    image: apache/activemq-classic:latest
+    ports:
+      - "8161:8161"   # console web (admin/admin)
+      - "5672:5672"   # AMQP (usado pelo código)
+
+  api:
+    build: .
+    command: npm run api
+    ports:
+      - "3000:3000"
+    environment:
+      BROKER_HOST: activemq
+    depends_on:
+      - activemq
+
+  worker:
+    build: .
+    command: npm run worker
+    environment:
+      BROKER_HOST: activemq
+    depends_on:
+      - activemq

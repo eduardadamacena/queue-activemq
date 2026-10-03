@@ -1,0 +1,19 @@
+{
+  "name": "queue-lab",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "api": "tsx src/api/server.ts",
+    "worker": "tsx src/worker/worker.ts",
+    "send-many": "tsx scripts/send-many.ts",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "rhea": "^3.0.3",
+    "tsx": "^4.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.6.0"
+  }
+}
